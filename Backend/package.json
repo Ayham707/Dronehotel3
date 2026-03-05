@@ -1,0 +1,25 @@
+{
+  "name": "react-dronehotel-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error no test specified\" && exit 1",
+    "start": "node server/index.js"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.1.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.14.0",
+    "node-fetch": "^3.2.6",
+    "node-rtsp-stream": "^0.0.9",
+    "react-bootstrap": "^2.4.0"
+  }
+}

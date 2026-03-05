@@ -1,0 +1,18 @@
+version: "3"
+services:
+  dronehotel4-backend:
+    build: .
+    image: dronehotel4-backend
+    ports:
+      - "4547:3006"
+    environment:
+      - ASD=test
+    restart: always
+    container_name: dronehotel4-backend
+
+  dronehotel-php:
+    image: php:fpm
+    #    volumes: 
+    #     - ./
+    security_opt:
+      - apparmor=unconfined
