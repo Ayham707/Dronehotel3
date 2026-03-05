@@ -1,18 +1,18 @@
-FROM node:12-alpine
+# Use Debian-based Node.js (full glibc)
+FROM node:20-bullseye
 
-# Create app directory and set the working dir.
-RUN mkdir -p /usr/src/app
+# Set working directory
 WORKDIR /usr/src/app
 
-# Install dependencies.
-COPY package*.json /usr/src/app/
+# Copy package files and install dependencies
+COPY package*.json ./
 RUN npm install
 
-# Copy over the source files.
-COPY . /usr/src/app
+# Copy the rest of the app
+COPY . .
 
-# Build the nextjs app.
-# RUN npm run build
-EXPOSE 4547
+# Expose the port from your .env (default 3006)
+EXPOSE 3006
 
-CMD ["npm", "run", "start"]
+# Start the server
+CMD ["node", "server/index.js"]

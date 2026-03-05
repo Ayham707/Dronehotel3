@@ -1,18 +1,18 @@
-version: "3"
+version: "3.8"
+
 services:
   dronehotel4-backend:
     build: .
     image: dronehotel4-backend
-    ports:
-      - "4547:3006"
-    environment:
-      - ASD=test
-    restart: always
     container_name: dronehotel4-backend
+    ports:
+      - "4547:3006"      # Map container port 3006 to host 4547
+    env_file:
+      - ./.env           # Loads your remote DB credentials
+    restart: always
 
   dronehotel-php:
     image: php:fpm
-    #    volumes: 
-    #     - ./
+    container_name: dronehotel-php
     security_opt:
       - apparmor=unconfined

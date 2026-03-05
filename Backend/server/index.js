@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import db from "./db.js";
 
 dotenv.config();
 
@@ -14,8 +15,16 @@ app.get('/', (req, res) => {
   res.send('Dronehotel backend iiiiiiis running');
 });
 
-// add more routes here
+app.get("/dronehotel", async (req, res) => {
+  try {
+    const [rows] = await db.query("SELECT * FROM DH_DroneHotel");
+    res.json(rows);
+  } catch (err) {
+    console.error("Database error:", err);
+    res.status(500).json({ error: err.message });
+  }
+});
 
 app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
